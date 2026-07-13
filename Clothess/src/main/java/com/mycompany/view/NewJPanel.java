@@ -4,6 +4,8 @@
  */
 package com.mycompany.view;
 
+import javax.swing.JFileChooser;
+import java.io.File;
 /**
  *
  * @author Lenovo
@@ -28,67 +30,45 @@ public class NewJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        btnCargarCVS = new javax.swing.JToggleButton();
         cmbAlgoritmos = new javax.swing.JComboBox<>();
-        btnOrdenar = new javax.swing.JToggleButton();
-        btnComparar = new javax.swing.JToggleButton();
-        btnLimpiar = new javax.swing.JToggleButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblPrendas = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        btnSalir = new javax.swing.JToggleButton();
         jLabel2 = new javax.swing.JLabel();
-        jlEstado = new javax.swing.JLabel();
+        lblEstado = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        btnGenerar = new javax.swing.JButton();
+        SpinerCantidad = new javax.swing.JSpinner();
+        btnCargar = new javax.swing.JButton();
+        btnOrdenar = new javax.swing.JButton();
+        btnComparar = new javax.swing.JButton();
+        btnLimpiar = new javax.swing.JButton();
+        lblCantidad = new javax.swing.JLabel();
+        btnSalir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(0, 0, 102));
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
-        btnCargarCVS.setBackground(new java.awt.Color(0, 102, 153));
-        btnCargarCVS.setFont(new java.awt.Font("Calibri", 2, 14)); // NOI18N
-        btnCargarCVS.setForeground(new java.awt.Color(255, 255, 255));
-        btnCargarCVS.setText("CARGAR CSV");
-
         cmbAlgoritmos.setBackground(new java.awt.Color(0, 102, 153));
         cmbAlgoritmos.setFont(new java.awt.Font("Calibri", 2, 14)); // NOI18N
         cmbAlgoritmos.setForeground(new java.awt.Color(255, 255, 255));
         cmbAlgoritmos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "BUBBLE SORT", "QUICK SORT", "MERGE SORT", "HEAP SORT", "INSERTION SORT", "SELECTION SORT" }));
 
-        btnOrdenar.setBackground(new java.awt.Color(0, 102, 153));
-        btnOrdenar.setFont(new java.awt.Font("Calibri", 2, 14)); // NOI18N
-        btnOrdenar.setForeground(new java.awt.Color(255, 255, 255));
-        btnOrdenar.setText("ORDENAR");
-        btnOrdenar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnOrdenarActionPerformed(evt);
-            }
-        });
-
-        btnComparar.setBackground(new java.awt.Color(0, 102, 153));
-        btnComparar.setFont(new java.awt.Font("Calibri", 2, 14)); // NOI18N
-        btnComparar.setForeground(new java.awt.Color(255, 255, 255));
-        btnComparar.setText("COMPARAR ALGORITMO");
-
-        btnLimpiar.setBackground(new java.awt.Color(0, 102, 153));
-        btnLimpiar.setFont(new java.awt.Font("Calibri", 2, 14)); // NOI18N
-        btnLimpiar.setForeground(new java.awt.Color(255, 255, 255));
-        btnLimpiar.setText("LIMPIAR");
-
         tblPrendas.setBackground(new java.awt.Color(102, 102, 255));
         tblPrendas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "TIPO DE PRENDA", "MARCA", "TALLA", "PRECIO"
+                "CODIGO", "NOMBRE", "CATEGORIA", "TALLA", "COLOR", "MARCA", "CANTIDAD", "PRECIO"
             }
         ));
         jScrollPane1.setViewportView(tblPrendas);
@@ -107,21 +87,12 @@ public class NewJPanel extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(jTable1);
 
-        btnSalir.setBackground(new java.awt.Color(0, 0, 102));
-        btnSalir.setFont(new java.awt.Font("Calibri", 3, 14)); // NOI18N
-        btnSalir.setForeground(new java.awt.Color(255, 255, 255));
-        btnSalir.setText("SALIR");
-        btnSalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalirActionPerformed(evt);
-            }
-        });
-
+        jLabel2.setFont(new java.awt.Font("Calibri", 3, 18)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("ALGORITMO");
 
-        jlEstado.setFont(new java.awt.Font("Calibri", 3, 18)); // NOI18N
-        jlEstado.setText("Estado: Esperando archivo CSV...");
+        lblEstado.setFont(new java.awt.Font("Calibri", 3, 18)); // NOI18N
+        lblEstado.setText("Estado: Esperando archivo CSV...");
 
         jLabel3.setFont(new java.awt.Font("Calibri", 3, 18)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -130,63 +101,127 @@ public class NewJPanel extends javax.swing.JPanel {
         jLabel4.setFont(new java.awt.Font("Calibri", 3, 18)); // NOI18N
         jLabel4.setText("RESULTADOS DE LOS ALGORITMOS");
 
+        btnGenerar.setBackground(new java.awt.Color(0, 102, 153));
+        btnGenerar.setForeground(new java.awt.Color(255, 255, 255));
+        btnGenerar.setText("GENERAR ALEATORIO");
+
+        SpinerCantidad.setFont(new java.awt.Font("Calibri", 3, 14)); // NOI18N
+
+        btnCargar.setBackground(new java.awt.Color(0, 102, 153));
+        btnCargar.setForeground(new java.awt.Color(255, 255, 255));
+        btnCargar.setText("CARGAR TXT");
+        btnCargar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCargarActionPerformed(evt);
+            }
+        });
+
+        btnOrdenar.setBackground(new java.awt.Color(0, 102, 153));
+        btnOrdenar.setFont(new java.awt.Font("Calibri", 3, 14)); // NOI18N
+        btnOrdenar.setForeground(new java.awt.Color(255, 255, 255));
+        btnOrdenar.setText("ORDENAR");
+        btnOrdenar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOrdenarActionPerformed(evt);
+            }
+        });
+
+        btnComparar.setBackground(new java.awt.Color(0, 102, 153));
+        btnComparar.setFont(new java.awt.Font("Calibri", 3, 14)); // NOI18N
+        btnComparar.setForeground(new java.awt.Color(255, 255, 255));
+        btnComparar.setText("COMPARAR ALGORIMO");
+        btnComparar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCompararActionPerformed(evt);
+            }
+        });
+
+        btnLimpiar.setBackground(new java.awt.Color(0, 102, 153));
+        btnLimpiar.setFont(new java.awt.Font("Calibri", 3, 14)); // NOI18N
+        btnLimpiar.setForeground(new java.awt.Color(255, 255, 255));
+        btnLimpiar.setText("LIMPIAR");
+
+        lblCantidad.setFont(new java.awt.Font("Calibri", 3, 18)); // NOI18N
+        lblCantidad.setText("CANTIDAD");
+
+        btnSalir.setBackground(new java.awt.Color(0, 0, 102));
+        btnSalir.setFont(new java.awt.Font("Calibri", 3, 18)); // NOI18N
+        btnSalir.setForeground(new java.awt.Color(255, 255, 255));
+        btnSalir.setText("SALIR");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGap(29, 29, 29)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 722, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4)
+                            .addComponent(lblEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 438, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 722, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jlEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 438, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(cmbAlgoritmos, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(50, 50, 50)
-                                        .addComponent(btnCargarCVS)
-                                        .addGap(46, 46, 46)
-                                        .addComponent(btnOrdenar)
-                                        .addGap(55, 55, 55)
-                                        .addComponent(btnComparar)
-                                        .addGap(48, 48, 48)
-                                        .addComponent(btnLimpiar)))
-                                .addGap(0, 59, Short.MAX_VALUE)))))
+                                        .addComponent(lblCantidad)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(SpinerCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btnGenerar)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btnCargar, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(cmbAlgoritmos, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(18, 18, 18)
+                                .addComponent(btnOrdenar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnComparar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnLimpiar))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 864, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(26, 26, 26))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(39, 39, 39)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbAlgoritmos, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnOrdenar)
+                    .addComponent(lblCantidad)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnGenerar)
+                    .addComponent(SpinerCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnComparar)
                     .addComponent(btnLimpiar)
-                    .addComponent(btnCargarCVS))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                    .addComponent(btnOrdenar)
+                    .addComponent(btnCargar, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbAlgoritmos, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jlEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -219,22 +254,32 @@ public class NewJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnCargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCargarActionPerformed
+
     private void btnOrdenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdenarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnOrdenarActionPerformed
 
+    private void btnCompararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompararActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCompararActionPerformed
+
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         // TODO add your handling code here:
-         System.exit(0);
+        System.exit(0);
     }//GEN-LAST:event_btnSalirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton btnCargarCVS;
-    private javax.swing.JToggleButton btnComparar;
-    private javax.swing.JToggleButton btnLimpiar;
-    private javax.swing.JToggleButton btnOrdenar;
-    private javax.swing.JToggleButton btnSalir;
+    private javax.swing.JSpinner SpinerCantidad;
+    private javax.swing.JButton btnCargar;
+    private javax.swing.JButton btnComparar;
+    private javax.swing.JButton btnGenerar;
+    private javax.swing.JButton btnLimpiar;
+    private javax.swing.JButton btnOrdenar;
+    private javax.swing.JButton btnSalir;
     private javax.swing.JComboBox<String> cmbAlgoritmos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -244,7 +289,8 @@ public class NewJPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JLabel jlEstado;
+    private javax.swing.JLabel lblCantidad;
+    private javax.swing.JLabel lblEstado;
     private javax.swing.JTable tblPrendas;
     // End of variables declaration//GEN-END:variables
 }
