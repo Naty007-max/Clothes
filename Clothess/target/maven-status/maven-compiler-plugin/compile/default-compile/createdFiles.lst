@@ -1,0 +1,9 @@
+com\mycompany\Core\Main.class
+com\mycompany\models\PrendaDeVestir.class
+com\mycompany\controller\GestorAlgoritmos.class
+com\mycompany\service\GestorDatos.class
+com\mycompany\STATS\AnalizadorResultados.class
+com\mycompany\sorting\AlgoritmoOrdenamiento.class
+com\mycompany\STATS\ResultadoOrdenamiento.class
+com\mycompany\service\GenPrendas.class
+com\mycompany\IO\lectorTXT.class
