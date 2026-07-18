@@ -19,7 +19,28 @@ public class BubbleSort implements AlgoritmoOrdenamiento {
 
         long inicio = System.nanoTime();
 
-        // Aquí irá el algoritmo
+        for (int i = 0;i< prendas.size() -1;i++){
+
+            boolean huboIntercambio = false; //asumimos de que no se ha cambiado nada
+
+            for (int j = 0; j < prendas.size() - 1; j++){
+            comparaciones++;
+
+                if (prendas.get(j).getPrecio() > prendas.get(j + 1).getPrecio()){// si hay una prenda por intercambiar
+
+                    PrendaDeVestir aux = prendas.get(j);
+                    prendas.set(j,prendas.get(j +1));
+                    prendas.set(j +1, aux); //intercambiamo
+                    intercambios++;
+                    huboIntercambio = true;// ya sabemo que hubo cambio
+                    }
+
+
+            }
+            if (!huboIntercambio){// si no se intercambio lo paramos en seco
+                break;
+            }
+        }
 
         long fin = System.nanoTime();
 
@@ -28,7 +49,7 @@ public class BubbleSort implements AlgoritmoOrdenamiento {
                 fin - inicio,
                 comparaciones,
                 intercambios,
-                lista
+                prendas
         );
     }
 }

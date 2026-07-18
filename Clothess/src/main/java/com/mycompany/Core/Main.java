@@ -1,7 +1,12 @@
 package com.mycompany.Core;
 
+import com.mycompany.STATS.ResultadoOrdenamiento;
 import com.mycompany.models.PrendaDeVestir;
 import com.mycompany.service.GestorDatos;
+import com.mycompany.sorting.BubbleSort;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
 
@@ -10,7 +15,11 @@ public class Main {
 
         // Crear el gestor
         GestorDatos gestor = new GestorDatos();
-
+        List<PrendaDeVestir> prendas = new ArrayList<>();
+        prendas.add(new PrendaDeVestir(1, "Camisa", "...", "...", "...", 10, 90000));
+        prendas.add(new PrendaDeVestir(2, "Pantalón", "...", "...", "...", 5, 30000));
+        prendas.add(new PrendaDeVestir(3, "Chaqueta", "...", "...", "...", 8, 70000));
+        prendas.add(new PrendaDeVestir(4, "Gorra", "...", "...", "...", 12, 20000));
         // Crear algunas prendas
         PrendaDeVestir prenda1 = new PrendaDeVestir(
                 1,
@@ -41,36 +50,18 @@ public class Main {
         for (PrendaDeVestir prenda : gestor.obtenerPrendas()) {
             System.out.println(prenda);
         }
+        BubbleSort bubble = new BubbleSort();
 
-        // Buscar una prenda
-        System.out.println("\n=== BUSCAR CÓDIGO 2 ===");
-        PrendaDeVestir encontrada = gestor.buscarPrenda(2);
+        ResultadoOrdenamiento resultado = bubble.ordenar(prendas);
 
-        if (encontrada != null) {
-            System.out.println(encontrada);
-        } else {
-            System.out.println("Prenda no encontrada.");
+        for (PrendaDeVestir p : resultado.getPrendasOrdenadas()) {
+            System.out.println(p.getPrecio());
         }
 
-        // Eliminar una prenda
-        System.out.println("\n=== ELIMINAR CÓDIGO 1 ===");
-
-        if (gestor.eliminarPrenda(1)) {
-            System.out.println("Prenda eliminada correctamente.");
-        } else {
-            System.out.println("No existe una prenda con ese código.");
-        }
-
-        // Mostrar nuevamente la lista
-        System.out.println("\n=== LISTA ACTUALIZADA ===");
-        for (PrendaDeVestir prenda : gestor.obtenerPrendas()) {
-            System.out.println(prenda);
-        }
-
-        // Limpiar la lista
-        gestor.limpiarLista();
-
-        System.out.println("\nCantidad de prendas: " + gestor.obtenerPrendas().size());
-
+        System.out.println("Comparaciones: " + resultado.getComparaciones());
+        System.out.println("Intercambios: " + resultado.getIntercambios());
+        System.out.println("Tiempo: " + resultado.getTiempoEjecucion() + " ns");
+        System.out.println("Algoritmo: " +resultado.getNombreAlgoritmo());
     }
 }
+
