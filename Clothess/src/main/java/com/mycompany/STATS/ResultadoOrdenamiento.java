@@ -45,7 +45,7 @@ public class ResultadoOrdenamiento {
     }
 
     public void setTiempoEjecucion(long tiempoEjecucion) {
-        this.tiempoEjecucion = tiempoEjecucion;
+        this.tiempoEjecucion = tiempoEjecucion/100000000;
     }
 
     public int getComparaciones() {

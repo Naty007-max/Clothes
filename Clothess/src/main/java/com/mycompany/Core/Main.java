@@ -4,6 +4,7 @@ import com.mycompany.STATS.ResultadoOrdenamiento;
 import com.mycompany.models.PrendaDeVestir;
 import com.mycompany.service.GestorDatos;
 import com.mycompany.sorting.BubbleSort;
+import com.mycompany.sorting.SelectionSort ;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,9 +51,9 @@ public class Main {
         for (PrendaDeVestir prenda : gestor.obtenerPrendas()) {
             System.out.println(prenda);
         }
-        BubbleSort bubble = new BubbleSort();
+       SelectionSort se = new SelectionSort ();
 
-        ResultadoOrdenamiento resultado = bubble.ordenar(prendas);
+        ResultadoOrdenamiento resultado = se.ordenar(prendas);
 
         for (PrendaDeVestir p : resultado.getPrendasOrdenadas()) {
             System.out.println(p.getPrecio());
@@ -60,7 +61,7 @@ public class Main {
 
         System.out.println("Comparaciones: " + resultado.getComparaciones());
         System.out.println("Intercambios: " + resultado.getIntercambios());
-        System.out.println("Tiempo: " + resultado.getTiempoEjecucion() + " ns");
+        System.out.println("Tiempo: " + resultado.getTiempoEjecucion() + " S");
         System.out.println("Algoritmo: " +resultado.getNombreAlgoritmo());
     }
 }
