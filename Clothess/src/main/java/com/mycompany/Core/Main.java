@@ -4,6 +4,7 @@ import com.mycompany.STATS.ResultadoOrdenamiento;
 import com.mycompany.models.PrendaDeVestir;
 import com.mycompany.service.GestorDatos;
 import com.mycompany.sorting.BubbleSort;
+import com.mycompany.sorting.InsertionSort;
 import com.mycompany.sorting.SelectionSort ;
 
 import java.util.ArrayList;
@@ -51,7 +52,7 @@ public class Main {
         for (PrendaDeVestir prenda : gestor.obtenerPrendas()) {
             System.out.println(prenda);
         }
-       SelectionSort se = new SelectionSort ();
+       InsertionSort se = new InsertionSort ();
 
         ResultadoOrdenamiento resultado = se.ordenar(prendas);
 

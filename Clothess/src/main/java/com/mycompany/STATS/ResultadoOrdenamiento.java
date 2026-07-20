@@ -5,7 +5,7 @@ import com.mycompany.models.PrendaDeVestir;
 
 public class ResultadoOrdenamiento {
      private String nombreAlgoritmo;
-    private long tiempoEjecucion;
+    private double tiempoEjecucion;
     private int comparaciones;
     private int intercambios;
     private List<PrendaDeVestir> prendasOrdenadas;
@@ -14,7 +14,7 @@ public class ResultadoOrdenamiento {
     }
 
     public ResultadoOrdenamiento(String nombreAlgoritmo,
-                                 long tiempoEjecucion,
+                                 double tiempoEjecucion,
                                  int comparaciones,
                                  int intercambios, List<PrendaDeVestir> prendasOrdenadas) {
 
@@ -40,12 +40,13 @@ public class ResultadoOrdenamiento {
         this.nombreAlgoritmo = nombreAlgoritmo;
     }
 
-    public long getTiempoEjecucion() {
+    public double getTiempoEjecucion() {
         return tiempoEjecucion;
     }
 
-    public void setTiempoEjecucion(long tiempoEjecucion) {
-        this.tiempoEjecucion = tiempoEjecucion/100000000;
+    public void setTiempoEjecucion(double tiempoEjecucion) {
+
+        this.tiempoEjecucion = tiempoEjecucion;
     }
 
     public int getComparaciones() {

@@ -43,10 +43,10 @@ public class BubbleSort implements AlgoritmoOrdenamiento {
         }
 
         long fin = System.nanoTime();
-
+        double tiempo = fin - inicio/1_000_000_000D;
         return new ResultadoOrdenamiento(
                 "Bubble Sort",
-                fin - inicio,
+                tiempo,
                 comparaciones,
                 intercambios,
                 prendas

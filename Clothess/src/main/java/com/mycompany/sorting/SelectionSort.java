@@ -9,7 +9,7 @@ import java.util.List;
 public class SelectionSort implements  AlgoritmoOrdenamiento{
     @Override
     public ResultadoOrdenamiento ordenar(List<PrendaDeVestir> prendas){
-        List <PrendaDeVestir> copia = new ArrayList<>(prendas);
+        List <PrendaDeVestir> copia = new ArrayList<>(prendas);// copiamos la lista original
 
         int comparaciones = 0;
         int intercambios = 0;
@@ -29,18 +29,19 @@ public class SelectionSort implements  AlgoritmoOrdenamiento{
 
                     }
             }
-            if (indicemenor != i){
+            if (indicemenor != i){// aqui vemos si el dato menor no es el que ya asumimos
                 PrendaDeVestir aux = copia.get(i);
-                copia.set(i,copia.get(indicemenor));
+                copia.set(i,copia.get(indicemenor));//intercambio
                 copia.set(indicemenor,aux);
-                intercambios++;
+                intercambios++;//aumentamos el numero de intercambios
             }
 
         }
         long fin = System.nanoTime();
+        double tiempo = fin - inicio/1_000_000_000D;
         return new ResultadoOrdenamiento(
                 "Selection Sort",
-                fin - inicio,
+                tiempo,
                 comparaciones,
                 intercambios,
                 copia
