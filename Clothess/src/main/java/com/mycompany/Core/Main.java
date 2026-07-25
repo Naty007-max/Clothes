@@ -5,6 +5,7 @@ import com.mycompany.models.PrendaDeVestir;
 import com.mycompany.service.GestorDatos;
 import com.mycompany.sorting.BubbleSort;
 import com.mycompany.sorting.InsertionSort;
+import com.mycompany.sorting.MergeSort;
 import com.mycompany.sorting.SelectionSort ;
 
 import java.util.ArrayList;
@@ -52,7 +53,7 @@ public class Main {
         for (PrendaDeVestir prenda : gestor.obtenerPrendas()) {
             System.out.println(prenda);
         }
-       InsertionSort se = new InsertionSort ();
+       MergeSort se = new MergeSort ();
 
         ResultadoOrdenamiento resultado = se.ordenar(prendas);
 

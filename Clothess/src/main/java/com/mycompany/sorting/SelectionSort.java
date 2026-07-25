@@ -7,6 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SelectionSort implements  AlgoritmoOrdenamiento{
+
+
+
+
     @Override
     public ResultadoOrdenamiento ordenar(List<PrendaDeVestir> prendas){
         List <PrendaDeVestir> copia = new ArrayList<>(prendas);// copiamos la lista original
@@ -38,7 +42,7 @@ public class SelectionSort implements  AlgoritmoOrdenamiento{
 
         }
         long fin = System.nanoTime();
-        double tiempo = fin - inicio/1_000_000_000D;
+        double tiempo = (fin - inicio) / 1_000_000_000D;
         return new ResultadoOrdenamiento(
                 "Selection Sort",
                 tiempo,
