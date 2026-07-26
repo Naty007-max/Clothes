@@ -3,10 +3,7 @@ package com.mycompany.Core;
 import com.mycompany.STATS.ResultadoOrdenamiento;
 import com.mycompany.models.PrendaDeVestir;
 import com.mycompany.service.GestorDatos;
-import com.mycompany.sorting.BubbleSort;
-import com.mycompany.sorting.InsertionSort;
-import com.mycompany.sorting.MergeSort;
-import com.mycompany.sorting.SelectionSort ;
+import com.mycompany.sorting.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,7 +50,7 @@ public class Main {
         for (PrendaDeVestir prenda : gestor.obtenerPrendas()) {
             System.out.println(prenda);
         }
-       MergeSort se = new MergeSort ();
+       QuickSort se = new QuickSort ();
 
         ResultadoOrdenamiento resultado = se.ordenar(prendas);
 
