@@ -3,7 +3,10 @@ package com.mycompany.Core;
 import com.mycompany.STATS.AnalizadorResultados;
 import com.mycompany.STATS.ResultadoOrdenamiento;
 import com.mycompany.models.PrendaDeVestir;
+import com.mycompany.service.GenPrendas;
+import com.mycompany.service.GestorAlgoritmos;
 import com.mycompany.service.GestorDatos;
+import com.mycompany.service.GestorResultados;
 import com.mycompany.sorting.*;
 import com.mycompany.view.NewJPanel;
 
@@ -24,96 +27,143 @@ public class Main {
         ventana.setLocationRelativeTo(null);
         ventana.setVisible(true);
     });
-        // Simulamos resultados de algoritmos
-        List<ResultadoOrdenamiento> resultados = new ArrayList<>();
 
-        resultados.add(new ResultadoOrdenamiento(
-                "Bubble Sort",
-                0.080,
-                1000,
-                500,
-                null
-        ));
+        // ==========================
+        // 1. Crear datos
+        // ==========================
 
-        resultados.add(new ResultadoOrdenamiento(
-                "Selection Sort",
-                0.050,
-                900,
-                200,
-                null
-        ));
+        GestorDatos gestorDatos = new GestorDatos();
 
-        resultados.add(new ResultadoOrdenamiento(
-                "Merge Sort",
-                0.004,
-                300,
-                100,
-                null
-        ));
+        GenPrendas generador = new GenPrendas();
 
-        resultados.add(new ResultadoOrdenamiento(
-                "Quick Sort",
-                0.002,
-                250,
-                80,
-                null
-        ));
-
-        resultados.add(new ResultadoOrdenamiento(
-                "Heap Sort",
-                0.006,
-                400,
-                120,
-                null
-        ));
-
-
-        AnalizadorResultados analizador = new AnalizadorResultados();
-
+        generador.generarPrendas(100, gestorDatos);
 
 
 
         // ==========================
-        // PRUEBA 2: Orden menor a mayor
+        // 2. Crear gestores
         // ==========================
 
-        List<ResultadoOrdenamiento> menorMayor =
+        GestorAlgoritmos gestorAlgoritmos =
+                new GestorAlgoritmos();
+
+
+        GestorResultados gestorResultados =
+                new GestorResultados();
+
+
+
+        AnalizadorResultados analizador =
+                new AnalizadorResultados();
+
+
+
+        // ==========================
+        // 3. Registrar algoritmos
+        // ==========================
+
+        QuickSort quick = new QuickSort();
+        MergeSort merge = new MergeSort();
+        HeapSort heap = new HeapSort();
+
+
+
+        // ==========================
+        // 4. Ejecutar algoritmos
+        // ==========================
+
+        ResultadoOrdenamiento resultadoQuick =
+                gestorAlgoritmos.ejecutar(
+                        quick,
+                        gestorDatos.obtenerPrendas()
+                );
+
+
+        ResultadoOrdenamiento resultadoMerge =
+                gestorAlgoritmos.ejecutar(
+                        merge,
+                        gestorDatos.obtenerPrendas()
+                );
+
+
+        ResultadoOrdenamiento resultadoHeap =
+                gestorAlgoritmos.ejecutar(
+                        heap,
+                        gestorDatos.obtenerPrendas()
+                );
+
+
+
+        // ==========================
+        // 5. Guardar resultados
+        // ==========================
+
+        gestorResultados.agregarResultado(resultadoQuick);
+
+        gestorResultados.agregarResultado(resultadoMerge);
+
+        gestorResultados.agregarResultado(resultadoHeap);
+
+
+
+        // ==========================
+        // 6. Obtener resultados
+        // ==========================
+
+        List<ResultadoOrdenamiento> resultados =
+                gestorResultados.obtenerResultados();
+
+
+
+        // ==========================
+        // 7. Analizar resultados
+        // ==========================
+
+        List<ResultadoOrdenamiento> ordenados =
                 analizador.ordenarMinTiempo(resultados);
 
 
-        System.out.println("\n===== MENOR A MAYOR =====");
-
-        for(ResultadoOrdenamiento resultado : menorMayor){
-
-            System.out.println(
-                    resultado.getNombreAlgoritmo()
-                            + " : "
-                            + resultado.getTiempoEjecucion()
-            );
-
-        }
-
 
         // ==========================
-        // PRUEBA 3: Orden mayor a menor
+        // 8. Mostrar
         // ==========================
 
-        List<ResultadoOrdenamiento> mayorMenor =
-                analizador.ordenarMaxTiempo(resultados);
+        System.out.println("===== RESULTADOS =====");
 
 
-        System.out.println("\n===== MAYOR A MENOR =====");
+        for(ResultadoOrdenamiento resultado : ordenados){
 
-        for(ResultadoOrdenamiento resultado : mayorMenor){
 
             System.out.println(
-                    resultado.getNombreAlgoritmo()
-                            + " : "
-                            + resultado.getTiempoEjecucion()
+                    "Algoritmo: "
+                            + resultado.getNombreAlgoritmo()
             );
+
+
+            System.out.println(
+                    "Tiempo: "
+                            + resultado.getTiempoEjecucion()
+                            + " segundos"
+            );
+
+
+            System.out.println(
+                    "Comparaciones: "
+                            + resultado.getComparaciones()
+            );
+
+
+            System.out.println(
+                    "Intercambios: "
+                            + resultado.getIntercambios()
+            );
+
+
+            System.out.println("---------------------");
 
         }
 
     }
+
 }
 
