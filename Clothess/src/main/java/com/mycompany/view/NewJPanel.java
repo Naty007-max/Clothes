@@ -12,6 +12,15 @@ import com.mycompany.models.PrendaDeVestir;
 import com.mycompany.service.GestorDatos;
 import com.mycompany.service.GenPrendas;
 import com.mycompany.IO.lectorTXT;
+import com.mycompany.sorting.AlgoritmoOrdenamiento;
+import com.mycompany.sorting.BubbleSort;
+import com.mycompany.sorting.SelectionSort;
+import com.mycompany.sorting.InsertionSort;
+import com.mycompany.sorting.MergeSort;
+import com.mycompany.sorting.QuickSort;
+import com.mycompany.sorting.HeapSort;
+
+import com.mycompany.STATS.ResultadoOrdenamiento;
 /**
  *
  * @author Lenovo
@@ -85,6 +94,11 @@ public class NewJPanel extends javax.swing.JPanel {
         cmbAlgoritmos.setFont(new java.awt.Font("Calibri", 2, 14)); // NOI18N
         cmbAlgoritmos.setForeground(new java.awt.Color(255, 255, 255));
         cmbAlgoritmos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "BUBBLE SORT", "QUICK SORT", "MERGE SORT", "HEAP SORT", "INSERTION SORT", "SELECTION SORT" }));
+        cmbAlgoritmos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbAlgoritmosActionPerformed(evt);
+            }
+        });
 
         tblPrendas.setBackground(new java.awt.Color(102, 102, 255));
         tblPrendas.setModel(new javax.swing.table.DefaultTableModel(
@@ -343,6 +357,41 @@ public class NewJPanel extends javax.swing.JPanel {
 
     private void btnOrdenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdenarActionPerformed
         // TODO add your handling code here:
+        String opcion = cmbAlgoritmos.getSelectedItem().toString();
+
+        AlgoritmoOrdenamiento algoritmo = null;
+
+        switch (opcion) {
+
+            case "BUBBLE SORT":
+                algoritmo = new BubbleSort();
+                break;
+
+            case "SELECTION SORT":
+                algoritmo = new SelectionSort();
+                break;
+
+            case "INSERTION SORT":
+                algoritmo = new InsertionSort();
+                break;
+
+            case "MERGE SORT":
+                algoritmo = new MergeSort();
+                break;
+
+            case "QUICK SORT":
+                algoritmo = new QuickSort();
+                break;
+
+            case "HEAP SORT":
+                algoritmo = new HeapSort();
+                break;
+        }
+        if (algoritmo == null) {
+        System.out.println("No se seleccionó un algoritmo válido.");
+        } else {
+            System.out.println("Algoritmo seleccionado: " + opcion);
+        }
     }//GEN-LAST:event_btnOrdenarActionPerformed
 
     private void btnCompararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompararActionPerformed
@@ -366,6 +415,11 @@ public class NewJPanel extends javax.swing.JPanel {
 
         lblEstado.setText("Se generaron " + cantidad + " prendas.");
     }//GEN-LAST:event_btnGenerarActionPerformed
+
+    private void cmbAlgoritmosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbAlgoritmosActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_cmbAlgoritmosActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
