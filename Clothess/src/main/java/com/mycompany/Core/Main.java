@@ -4,15 +4,25 @@ import com.mycompany.STATS.ResultadoOrdenamiento;
 import com.mycompany.models.PrendaDeVestir;
 import com.mycompany.service.GestorDatos;
 import com.mycompany.sorting.*;
+import com.mycompany.view.NewJPanel;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JFrame;
 
 public class Main {
 
     //hola
     public static void main(String[] args) {
 
+        java.awt.EventQueue.invokeLater(() -> {
+        JFrame ventana = new JFrame("ClothesSort");
+        ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        ventana.setContentPane(new NewJPanel());
+        ventana.pack();
+        ventana.setLocationRelativeTo(null);
+        ventana.setVisible(true);
+    });
         // Crear el gestor
         GestorDatos gestor = new GestorDatos();
         List<PrendaDeVestir> prendas = new ArrayList<>();
