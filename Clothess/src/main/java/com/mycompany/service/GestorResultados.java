@@ -16,6 +16,18 @@ public class GestorResultados {
 
     }
 
+    public boolean existeAlgoritmo(String nombreAlgoritmo) {
+
+        for (ResultadoOrdenamiento resultado : resultados) {
+
+            if (resultado.getNombreAlgoritmo().equalsIgnoreCase(nombreAlgoritmo)) {
+                return true;
+            }
+
+        }
+
+    return false;
+    }
 
     public void agregarResultado(ResultadoOrdenamiento resultado){
 

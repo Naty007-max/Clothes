@@ -21,6 +21,7 @@ import com.mycompany.sorting.QuickSort;
 import com.mycompany.sorting.HeapSort;
 
 import com.mycompany.STATS.ResultadoOrdenamiento;
+import com.mycompany.service.GestorResultados;
 import javax.swing.JOptionPane;
 /**
  *
@@ -31,6 +32,7 @@ public class NewJPanel extends javax.swing.JPanel {
     private GestorDatos gestor = new GestorDatos();
     private GenPrendas generador = new GenPrendas();
     private lectorTXT lector = new lectorTXT();
+    private GestorResultados gestorResultados = new GestorResultados();
     /**private GenPrendas generador = new GenPrendas();
      * Creates new form NewJPanel
      */
@@ -400,7 +402,30 @@ public class NewJPanel extends javax.swing.JPanel {
         } else {
             System.out.println("Algoritmo seleccionado: " + opcion);
         }
+        
+        if (gestorResultados.existeAlgoritmo(opcion)) {
+
+            JOptionPane.showMessageDialog(
+                this,
+                "El algoritmo " + opcion + " ya fue ejecutado.",
+                "Aviso",
+                JOptionPane.INFORMATION_MESSAGE
+            );
+
+            return;
+        }
         ResultadoOrdenamiento resultado = algoritmo.ordenar(gestor.obtenerPrendas());
+        gestorResultados.agregarResultado(resultado);
+        if (gestorResultados.obtenerResultados().size() == 6) {
+
+            btnOrdenar.setEnabled(false);
+
+            lblEstado.setText("Estado: Todos los algoritmos fueron ejecutados.");
+
+        }
+        
+        
+        mostrarPrendasEnTabla(resultado.getPrendasOrdenadas());
         
         DefaultTableModel modelo = (DefaultTableModel) tblAlgoritmo.getModel();
 
@@ -421,11 +446,46 @@ public class NewJPanel extends javax.swing.JPanel {
         for (PrendaDeVestir p : resultado.getPrendasOrdenadas()) {
             System.out.println(p.getPrecio());
         }
-        mostrarPrendasEnTabla(resultado.getPrendasOrdenadas());
+       
     }//GEN-LAST:event_btnOrdenarActionPerformed
 
     private void btnCompararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompararActionPerformed
         // TODO add your handling code here:
+        List<ResultadoOrdenamiento> resultados = gestorResultados.obtenerResultados();
+
+        if (resultados.size() < 2) {
+            JOptionPane.showMessageDialog(
+                this,
+                "Debe ejecutar al menos dos algoritmos para comparar.",
+                "Comparación",
+                JOptionPane.WARNING_MESSAGE
+            );
+            return;
+        }
+        ResultadoOrdenamiento mejorTiempo = resultados.get(0);
+        ResultadoOrdenamiento mejorComparaciones = resultados.get(0);
+        ResultadoOrdenamiento mejorIntercambios = resultados.get(0);
+
+        for (ResultadoOrdenamiento r : resultados) {
+
+            if (r.getTiempoEjecucion() < mejorTiempo.getTiempoEjecucion()) {
+                mejorTiempo = r;
+            }
+
+            if (r.getComparaciones() < mejorComparaciones.getComparaciones()) {
+                mejorComparaciones = r;
+            }
+
+            if (r.getIntercambios() < mejorIntercambios.getIntercambios()) {
+                mejorIntercambios = r;
+            }
+        }
+        JOptionPane.showMessageDialog(this,
+        "RESULTADO DE LA COMPARACIÓN\n\n"
+        + "Más rápido: " + mejorTiempo.getNombreAlgoritmo()
+        + "\nMenos comparaciones: " + mejorComparaciones.getNombreAlgoritmo()
+        + "\nMenos intercambios: " + mejorIntercambios.getNombreAlgoritmo()
+        );
     }//GEN-LAST:event_btnCompararActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
@@ -465,6 +525,11 @@ public class NewJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         // Limpiar la lista del backend
             gestor.limpiarLista();
+            
+            gestorResultados.limpiarResultados();
+            
+            btnOrdenar.setEnabled(true);
+            
 
             // Limpiar la tabla
             DefaultTableModel modelo = (DefaultTableModel) tblPrendas.getModel();
