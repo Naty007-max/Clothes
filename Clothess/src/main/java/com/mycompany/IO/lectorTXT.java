@@ -18,7 +18,7 @@ public class lectorTXT {
             while ((linea = lector.readLine()) != null) {
 
                 String[] datos = linea.split(",");
-                if (datos.length != 7) {
+                if (datos.length != 7) {//fijar
                     continue;
                 }
                 int codigo = Integer.parseInt(datos[0]);
