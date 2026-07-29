@@ -23,7 +23,7 @@ public class QuickSort implements AlgoritmoOrdenamiento {
 
         long fin = System.nanoTime();
 
-        double tiempo = (fin - inicio) / 1_000_000_000D;
+        double tiempo = (fin - inicio) / 1_000_000D;
 
         return new ResultadoOrdenamiento(
                 "Quick Sort",
