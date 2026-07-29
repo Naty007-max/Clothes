@@ -167,6 +167,11 @@ public class NewJPanel extends javax.swing.JPanel {
         btnLimpiar.setFont(new java.awt.Font("Calibri", 3, 14)); // NOI18N
         btnLimpiar.setForeground(new java.awt.Color(255, 255, 255));
         btnLimpiar.setText("LIMPIAR");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
 
         btnSalir.setBackground(new java.awt.Color(204, 0, 0));
         btnSalir.setFont(new java.awt.Font("Calibri", 3, 18)); // NOI18N
@@ -358,6 +363,7 @@ public class NewJPanel extends javax.swing.JPanel {
     private void btnOrdenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdenarActionPerformed
         // TODO add your handling code here:
         String opcion = cmbAlgoritmos.getSelectedItem().toString();
+        lblEstado.setText("Estado: Algoritmo ejecutado -> " + opcion);
 
         AlgoritmoOrdenamiento algoritmo = null;
 
@@ -428,6 +434,25 @@ public class NewJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
 
     }//GEN-LAST:event_cmbAlgoritmosActionPerformed
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        // TODO add your handling code here:
+        // Limpiar la lista del backend
+            gestor.limpiarLista();
+
+            // Limpiar la tabla
+            DefaultTableModel modelo = (DefaultTableModel) tblPrendas.getModel();
+            modelo.setRowCount(0);
+
+            // Reiniciar el ComboBox
+            cmbAlgoritmos.setSelectedIndex(0);
+
+            // Reiniciar el Spinner (si tienes uno)
+            SpinerCantidad.setValue(0);
+
+            // Actualizar el estado
+            lblEstado.setText("Estado: Sistema limpio.");
+    }//GEN-LAST:event_btnLimpiarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
