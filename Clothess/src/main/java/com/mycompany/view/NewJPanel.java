@@ -480,12 +480,14 @@ public class NewJPanel extends javax.swing.JPanel {
                 mejorIntercambios = r;
             }
         }
-        JOptionPane.showMessageDialog(this,
-        "RESULTADO DE LA COMPARACIÓN\n\n"
-        + "Más rápido: " + mejorTiempo.getNombreAlgoritmo()
-        + "\nMenos comparaciones: " + mejorComparaciones.getNombreAlgoritmo()
-        + "\nMenos intercambios: " + mejorIntercambios.getNombreAlgoritmo()
+        FrmComparacion ventana = new FrmComparacion(
+            mejorTiempo,
+            mejorComparaciones,
+            mejorIntercambios
         );
+
+        ventana.setLocationRelativeTo(null);
+        ventana.setVisible(true);
     }//GEN-LAST:event_btnCompararActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
