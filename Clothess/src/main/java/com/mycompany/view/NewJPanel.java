@@ -392,6 +392,14 @@ public class NewJPanel extends javax.swing.JPanel {
         } else {
             System.out.println("Algoritmo seleccionado: " + opcion);
         }
+        ResultadoOrdenamiento resultado = algoritmo.ordenar(gestor.obtenerPrendas());
+
+        System.out.println("----- LISTA ORDENADA -----");
+
+        for (PrendaDeVestir p : resultado.getPrendasOrdenadas()) {
+            System.out.println(p.getPrecio());
+        }
+        mostrarPrendasEnTabla(resultado.getPrendasOrdenadas());
     }//GEN-LAST:event_btnOrdenarActionPerformed
 
     private void btnCompararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompararActionPerformed
