@@ -21,6 +21,7 @@ import com.mycompany.sorting.QuickSort;
 import com.mycompany.sorting.HeapSort;
 
 import com.mycompany.STATS.ResultadoOrdenamiento;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Lenovo
@@ -124,7 +125,7 @@ public class NewJPanel extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "ALGORITMO", "COMPARACIONES", "INTERCAMBIOS", "TIEMPO (S)"
+                "ALGORITMO", "COMPARACIONES", "INTERCAMBIOS", "TIEMPO (ms)"
             }
         ));
         jScrollPane2.setViewportView(tblAlgoritmo);
@@ -186,6 +187,7 @@ public class NewJPanel extends javax.swing.JPanel {
         jPanel2.setBackground(new java.awt.Color(153, 153, 255));
 
         SpinerCantidad.setFont(new java.awt.Font("Calibri", 3, 14)); // NOI18N
+        SpinerCantidad.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
 
         lblCantidad.setFont(new java.awt.Font("Calibri", 3, 12)); // NOI18N
         lblCantidad.setText("CANTIDAD");
@@ -402,6 +404,7 @@ public class NewJPanel extends javax.swing.JPanel {
         
         DefaultTableModel modelo = (DefaultTableModel) tblAlgoritmo.getModel();
 
+        System.out.println(resultado.getTiempoEjecucion());
         modelo.insertRow(0, new Object[]{
             resultado.getNombreAlgoritmo(),
             resultado.getComparaciones(),
@@ -433,6 +436,16 @@ public class NewJPanel extends javax.swing.JPanel {
     private void btnGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarActionPerformed
         // TODO add your handling code here:
         int cantidad = (Integer) SpinerCantidad.getValue();
+        
+        if (cantidad <= 0) {
+        JOptionPane.showMessageDialog(
+            this,
+            "Debe ingresar una cantidad mayor que cero.",
+            "Cantidad inválida",
+            JOptionPane.WARNING_MESSAGE
+        );
+        return;
+        }
 
         gestor.limpiarLista();
 
@@ -464,7 +477,7 @@ public class NewJPanel extends javax.swing.JPanel {
             cmbAlgoritmos.setSelectedIndex(0);
 
             // Reiniciar el Spinner (si tienes uno)
-            SpinerCantidad.setValue(0);
+            SpinerCantidad.setValue(1);
 
             // Actualizar el estado
             lblEstado.setText("Estado: Sistema limpio.");
