@@ -97,8 +97,8 @@
                               </Group>
                               <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jLabel4" pref="112" max="32767" attributes="0"/>
-                                  <Component id="lblTiempo" max="32767" attributes="0"/>
+                                  <Component id="jLabel4" max="32767" attributes="0"/>
+                                  <Component id="lblTiempo" pref="112" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -160,7 +160,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Calibri" size="14" style="3"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="jLabel5"/>
+                <Property name="text" type="java.lang.String" value="lblRapido"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblTiempo">
@@ -168,7 +168,8 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Calibri" size="14" style="3"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="jLabel6"/>
+                <Property name="text" type="java.lang.String" value="lblTiempo"/>
+                <Property name="horizontalTextPosition" type="int" value="0"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -192,7 +193,7 @@
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jLabel10" pref="100" max="32767" attributes="0"/>
+                                  <Component id="jLabel10" max="32767" attributes="0"/>
                                   <Component id="lblCantIntercambios" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
@@ -251,7 +252,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Calibri" size="14" style="3"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="jLabel11"/>
+                <Property name="text" type="java.lang.String" value="lblintercambios"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblCantIntercambios">
@@ -259,7 +260,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Calibri" size="14" style="3"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="jLabel12"/>
+                <Property name="text" type="java.lang.String" value="lblCantIntercambios"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -353,7 +354,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Calibri Light" size="14" style="3"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="jLabel8"/>
+                <Property name="text" type="java.lang.String" value="lblComparaciones"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblCantComparaciones">
@@ -361,7 +362,8 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Calibri" size="14" style="3"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="jLabel8"/>
+                <Property name="text" type="java.lang.String" value="lblCantComparaciones"/>
+                <Property name="requestFocusEnabled" type="boolean" value="false"/>
               </Properties>
             </Component>
           </SubComponents>

@@ -82,10 +82,11 @@ public class FrmComparacion extends javax.swing.JFrame {
         jLabel4.setText("TIEMPO");
 
         lblRapido.setFont(new java.awt.Font("Calibri", 3, 14)); // NOI18N
-        lblRapido.setText("jLabel5");
+        lblRapido.setText("lblRapido");
 
         lblTiempo.setFont(new java.awt.Font("Calibri", 3, 14)); // NOI18N
-        lblTiempo.setText("jLabel6");
+        lblTiempo.setText("lblTiempo");
+        lblTiempo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -100,8 +101,8 @@ public class FrmComparacion extends javax.swing.JFrame {
                             .addComponent(lblRapido, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(54, 54, 54)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
-                            .addComponent(lblTiempo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblTiempo, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(112, 112, 112)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -133,10 +134,10 @@ public class FrmComparacion extends javax.swing.JFrame {
         jLabel10.setText("INTERCAMBIOS");
 
         lblIntercambios.setFont(new java.awt.Font("Calibri", 3, 14)); // NOI18N
-        lblIntercambios.setText("jLabel11");
+        lblIntercambios.setText("lblintercambios");
 
         lblCantIntercambios.setFont(new java.awt.Font("Calibri", 3, 14)); // NOI18N
-        lblCantIntercambios.setText("jLabel12");
+        lblCantIntercambios.setText("lblCantIntercambios");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -154,7 +155,7 @@ public class FrmComparacion extends javax.swing.JFrame {
                             .addComponent(lblIntercambios, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lblCantIntercambios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(45, 45, 45))))
         );
@@ -187,10 +188,11 @@ public class FrmComparacion extends javax.swing.JFrame {
         jLabel7.setText("COMPARACIONES");
 
         lblComparaciones.setFont(new java.awt.Font("Calibri Light", 3, 14)); // NOI18N
-        lblComparaciones.setText("jLabel8");
+        lblComparaciones.setText("lblComparaciones");
 
         lblCantComparaciones.setFont(new java.awt.Font("Calibri", 3, 14)); // NOI18N
-        lblCantComparaciones.setText("jLabel8");
+        lblCantComparaciones.setText("lblCantComparaciones");
+        lblCantComparaciones.setRequestFocusEnabled(false);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
