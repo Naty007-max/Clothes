@@ -82,6 +82,7 @@ public class MergeSort implements AlgoritmoOrdenamiento {
 
         for (int k = 0; k < temp.size(); k++) {
             lista.set(comienzo + k, temp.get(k));
+            intercambios++;
         }
     }
 }
