@@ -496,12 +496,12 @@ public class NewJPanel extends javax.swing.JPanel {
             }
         }
         FrmComparacion ventana = new FrmComparacion(
-            mejorTiempo,
-            mejorComparaciones,
-            mejorIntercambios,
-            peorComparaciones,
-            mejorIntercambios,
-            peorIntercambios
+                mejorTiempo,
+                peorTiempo,
+                mejorComparaciones,
+                peorComparaciones,
+                mejorIntercambios,
+                peorIntercambios
         );
 
         ventana.setLocationRelativeTo(null);

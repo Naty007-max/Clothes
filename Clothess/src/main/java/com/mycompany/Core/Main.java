@@ -2,7 +2,6 @@ package com.mycompany.Core;
 
 import com.mycompany.STATS.AnalizadorResultados;
 import com.mycompany.STATS.ResultadoOrdenamiento;
-import com.mycompany.models.PrendaDeVestir;
 import com.mycompany.service.GenPrendas;
 import com.mycompany.service.GestorAlgoritmos;
 import com.mycompany.service.GestorDatos;
@@ -10,7 +9,6 @@ import com.mycompany.service.GestorResultados;
 import com.mycompany.sorting.*;
 import com.mycompany.view.NewJPanel;
 
-import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
 
