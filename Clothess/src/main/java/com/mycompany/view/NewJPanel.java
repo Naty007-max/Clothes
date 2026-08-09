@@ -465,6 +465,9 @@ public class NewJPanel extends javax.swing.JPanel {
         ResultadoOrdenamiento mejorTiempo = resultados.get(0);
         ResultadoOrdenamiento mejorComparaciones = resultados.get(0);
         ResultadoOrdenamiento mejorIntercambios = resultados.get(0);
+        ResultadoOrdenamiento peorTiempo = resultados.get(0);
+        ResultadoOrdenamiento peorComparaciones = resultados.get(0);
+        ResultadoOrdenamiento peorIntercambios = resultados.get(0);
 
         for (ResultadoOrdenamiento r : resultados) {
 
@@ -479,11 +482,26 @@ public class NewJPanel extends javax.swing.JPanel {
             if (r.getIntercambios() < mejorIntercambios.getIntercambios()) {
                 mejorIntercambios = r;
             }
+            
+            if (r.getTiempoEjecucion() > peorTiempo.getTiempoEjecucion()) {
+                peorTiempo = r;
+            }
+
+            if (r.getComparaciones() > peorComparaciones.getComparaciones()) {
+                peorComparaciones = r;
+            }
+
+            if (r.getIntercambios() > peorIntercambios.getIntercambios()) {
+                peorIntercambios = r;
+            }
         }
         FrmComparacion ventana = new FrmComparacion(
             mejorTiempo,
             mejorComparaciones,
-            mejorIntercambios
+            mejorIntercambios,
+            peorComparaciones,
+            mejorIntercambios,
+            peorIntercambios
         );
 
         ventana.setLocationRelativeTo(null);
