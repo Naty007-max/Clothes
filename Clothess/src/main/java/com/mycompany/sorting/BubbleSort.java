@@ -5,35 +5,35 @@ import java.util.List;
 
 import com.mycompany.models.PrendaDeVestir;
 import com.mycompany.STATS.ResultadoOrdenamiento;
-import com.mycompany.utils.UtilOrdenamiento;
+
 
 public class BubbleSort implements AlgoritmoOrdenamiento {
 
     @Override
     public ResultadoOrdenamiento ordenar(List<PrendaDeVestir> prendas) {
 
-        List<PrendaDeVestir> lista = new ArrayList<>(prendas);
+        List<PrendaDeVestir> copia = new ArrayList<>(prendas);
 
         int comparaciones = 0;
         int intercambios = 0;
 
         long inicio = System.nanoTime();
 
-        for (int i = 0;i< prendas.size() -1;i++){
+        for (int i = 0;i< copia.size() -1;i++){
 
             boolean huboIntercambio = false; //asumimos de que no se ha cambiado nada
 
-            for (int j = 0; j < prendas.size() - 1; j++){
-            comparaciones++;
+            for (int j = 0; j < copia.size() - 1; j++){
+                comparaciones++;
 
-                if (prendas.get(j).getPrecio() > prendas.get(j + 1).getPrecio()){// si hay una prenda por intercambiar
+                if (copia.get(j).getPrecio() > copia.get(j + 1).getPrecio()){// si hay una prenda por intercambiar
 
-                    PrendaDeVestir aux = prendas.get(j);
-                    prendas.set(j,prendas.get(j +1));
-                    prendas.set(j +1, aux); //intercambiamo
+                    PrendaDeVestir aux = copia.get(j);
+                    copia.set(j,copia.get(j +1));
+                    copia.set(j +1, aux); //intercambiamo
                     intercambios++;
                     huboIntercambio = true;// ya sabemo que hubo cambio
-                    }
+                }
 
 
             }
@@ -49,7 +49,7 @@ public class BubbleSort implements AlgoritmoOrdenamiento {
                 tiempo,
                 comparaciones,
                 intercambios,
-                prendas
+                copia
         );
     }
 }
